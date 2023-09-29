@@ -4,6 +4,7 @@ import sacn
 import json
 import time
 import threading
+import socket
 
 node_url = "http://192.168.1.56/enter"
 
@@ -58,7 +59,7 @@ scene = {}
 live_data = {}
 
 receiver = sacn.sACNreceiver()
-sender = sacn.sACNsender()
+sender = sacn.sACNsender(source_name=socket.gethostname())
 receiver.start()
 sender.start()
 registeredRecvUniverses = []
